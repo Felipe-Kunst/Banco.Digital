@@ -1,14 +1,22 @@
 public class Main {
 
     public static void main(String[] args) {
-        Cliente felipe = new Cliente();
-        felipe.setNome("Felipe");
+        Cliente cliente1 = new Cliente();
+        cliente1.setNome("Felipe Martins");
 
-        Conta cc = new ContaCorrente(felipe);
+        Cliente cliente2 = new Cliente();
+        cliente2.setNome("Carla Maria");
 
-        cc.depositar(200);
-        cc.imprimirExtrato();
-        cc.sacar(50);
-        cc.imprimirExtrato();
+        Conta ccFelipe = new ContaCorrente(cliente1);
+        Conta poupancaMaria = new ContaPoupanca(cliente2);
+
+        ccFelipe.depositar(300);
+        ccFelipe.sacar(50);
+        ccFelipe.imprimirExtrato();
+        ccFelipe.transferir(100, poupancaMaria);
+
+        System.out.println("\n Saldos após a transferência: \n");
+        ccFelipe.imprimirExtrato();
+        poupancaMaria.imprimirExtrato();
     }
 }
